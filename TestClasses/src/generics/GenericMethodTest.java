@@ -12,23 +12,111 @@ public class GenericMethodTest
 		Double[] doubleArray = { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7 };
 		Character[] characterArray = { 'H', 'E', 'L', 'L', 'O' };
 
+		// original printArray tests
 		System.out.printf("Array integerArray contains:%n");
 		printArray(integerArray); // pass an Integer array
 		System.out.printf("%nArray doubleArray contains:%n");
 		printArray(doubleArray); // pass a Double array
 		System.out.printf("%nArray characterArray contains:%n");
 		printArray(characterArray); // pass a Character array
-		System.out.println();
-		System.out.println("Overloaded printArray tests:");
+
+		// text separator
+		System.out.println("_______________________________________\n");
+		System.out.println("Overloaded printArray method tests:");
+		System.out.println("_______________________________________\n");
+		System.out.println("Array characterArray contains:");
+
+		// tests
 		try
 		{
-			printArray(characterArray, 0, 4);
+			int size = printArray(characterArray, 0, 4);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(characterArray, 0, 3);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(characterArray, 0, 2);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(characterArray, 0, 1);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(characterArray, 0, 0);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+//			throws exception. Exception is appropriately caught.
+//			size = printArray(characterArray, 1, 0);
+//			System.out.println("\nArray size = " + size);
+//			System.out.println();
+//			size = printArray(characterArray, 0, 10);
+//			System.out.println("\nArray size = " + size);
+//			System.out.println();
+//			size = printArray(characterArray, 10, 11);
+//			System.out.println("\nArray size = " + size);
+//			System.out.println();
+			System.out.println("\nArray doubleArray contains:");
+			size = printArray(doubleArray, 2, 5);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(doubleArray, 1, 1);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(doubleArray, 1, 1);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(doubleArray, 0, 6);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(doubleArray, 4, 5);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(doubleArray, 4, 6);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+//			throws exception. Exception is appropriately caught.
+//			size = printArray(doubleArray, 0, 7);
+//			System.out.println("\nArray size = " + size);
+//			System.out.println();
+//			size = printArray(doubleArray, 7, 8);
+//			System.out.println("\nArray size = " + size);
+//			System.out.println();
+//			size = printArray(doubleArray, 3, 2);
+//			System.out.println("\nArray size = " + size);
+//			System.out.println();
+			System.out.println("\nArray integerArray contains:");
+			size = printArray(integerArray, 2, 5);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(integerArray, 1, 1);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(integerArray, 0, 1);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(integerArray, 0, 5);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(integerArray, 4, 5);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+			size = printArray(integerArray, 3, 5);
+//			System.out.println("\nArray size = " + size);
+			System.out.println();
+//			the three following tests throw exception. Exception is appropriately caught.
+//			size = printArray(integerArray, 6, 7);
+//			System.out.println("\nArray size = " + size);
+//			System.out.println();
+//			size = printArray(integerArray, 4, 3);
+//			System.out.println("\nArray size = " + size);
+//			System.out.println();
+//			size = printArray(integerArray, 0, 7);
+//			System.out.println("\nArray size = " + size);
+//			System.out.println();
 		}
 		catch (InvalidSubscriptException e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} // pass a Character array
+			System.out.println("Exception caught: " + e.getClass());
+		}
 	}
 
 	// generic method printArray
@@ -42,7 +130,7 @@ public class GenericMethodTest
 		System.out.println();
 	}
 
-	// generic method printArray
+	// overloaded generic method printArray
 	public static <T> int printArray(T[] inputArray, int lowSubscript, int highSubscript)
 			throws InvalidSubscriptException
 	{
@@ -52,15 +140,14 @@ public class GenericMethodTest
 		if (inputArray != null)
 		{
 			int arraySize = inputArray.length;
-			if (lowIndex > arraySize || lowIndex < 0 || highIndex > arraySize 
+			if (lowIndex >= arraySize || lowIndex < 0 || highIndex >= arraySize 
 					|| highIndex < 0 || highIndex < lowIndex)
 			{
 				throw new InvalidSubscriptException();
 			}
-			System.out.println("Array " + inputArray + " contains:");
-			for (int i = lowIndex; i < highIndex; i++)
+			for (int i = lowIndex; i <= highIndex; i++)
 			{
-				System.out.println(inputArray[i].toString());
+				System.out.print(inputArray[i].toString() + " ");
 				numberOfElementsPrinted++;
 			}
 		}
