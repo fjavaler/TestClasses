@@ -25,9 +25,35 @@ public class GenericMethodTest
 	{
 		// display array elements
 		for (T element : inputArray)
+		{
 			System.out.printf("%s ", element);
-
+		}
 		System.out.println();
+	}
+
+	// generic method printArray
+	public static <T> int printArray(T[] inputArray, int lowSubscript, int highSubscript)
+			throws InvalidSubscriptException
+	{
+		int numberOfElementsPrinted = 0;
+		int lowIndex = lowSubscript;
+		int highIndex = highSubscript;
+		if (inputArray != null)
+		{
+			int arraySize = inputArray.length;
+			if (lowIndex > arraySize || lowIndex < 0 || highIndex > arraySize 
+					|| highIndex < 0 || highIndex < lowIndex)
+			{
+				throw new InvalidSubscriptException();
+			}
+			System.out.println("Array " + inputArray + " contains:");
+			for (int i = lowIndex; i < highIndex; i++)
+			{
+				System.out.println(inputArray[i].toString());
+				numberOfElementsPrinted++;
+			}
+		}
+		return numberOfElementsPrinted;
 	}
 } // end class GenericMethodTest
 
