@@ -18,6 +18,17 @@ public class GenericMethodTest
 		printArray(doubleArray); // pass a Double array
 		System.out.printf("%nArray characterArray contains:%n");
 		printArray(characterArray); // pass a Character array
+		System.out.println();
+		System.out.println("Overloaded printArray tests:");
+		try
+		{
+			printArray(characterArray, 0, 4);
+		}
+		catch (InvalidSubscriptException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // pass a Character array
 	}
 
 	// generic method printArray
