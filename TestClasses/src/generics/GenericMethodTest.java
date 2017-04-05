@@ -1,10 +1,43 @@
+/********************************************************
+ *
+ *  Project :  M6 A1 | Generic methods
+ *  File    :  <Name of source code file>
+ *  Name    :  <Name of programmer>
+ *  Date    :  <Date created (project due date)>
+ *
+ *  Description : (Narrative description, not code)
+ *
+ *    1) What is the purpose of the code; what problem does the code solve.
+ *	  The purpose of this code is to test generic methods.
+ *
+ *    2) What data-structures are used.
+ *    Arrays are used.
+ *
+ *    3) What algorithms, techniques, etc. are used in implementing the data structures.
+ *	  An overloaded printArray method 
+ *
+ *    4) What methods are implemented (optional).
+ *
+ *  Changes :  <Description|date of modifications>
+ *
+ ********************************************************/
 package generics;
 
 //Fig. 20.3: GenericMethodTest.java
 //Printing array elements using generic method printArray.
 
+/**
+ * This class performs tests on two printArray methods. One which
+ * has one parameter and another that has three.
+ * 
+ * @author Frederick Javalera
+ */
 public class GenericMethodTest
 {
+	/**
+	 * Main method.
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
 		// create arrays of Integer, Double and Character
@@ -119,7 +152,17 @@ public class GenericMethodTest
 		}
 	}
 
-	// generic method printArray
+	/****************************************************
+	 * Method     : PrintArray
+	 *
+	 * Purpose    : The printArray method takes in inputArray
+	 * and prints each element in it.
+	 *
+	 * Parameters : inputArray - a generic array of objects.
+	 *
+	 * Returns    : This method does not return a value.
+	 *
+	 ****************************************************/
 	public static <T> void printArray(T[] inputArray)
 	{
 		// display array elements
@@ -130,17 +173,35 @@ public class GenericMethodTest
 		System.out.println();
 	}
 
-	// overloaded generic method printArray
+	/****************************************************
+	 * Method     : PrintArray
+	 *
+	 * Purpose    : The printArray method takes in generic inputArray
+	 * and prints each element in it.
+	 *
+	 * Parameters : inputArray - a generic array of objects.
+	 * lowSubscript - the lowest index in inputArray to be printed
+	 * from, inclusively.
+	 * highSubscript - the highest index in inputArray to be printed
+	 * from, inclusively.
+	 *
+	 * Returns    : This method returns an int value representing
+	 * the number of elements printed.
+	 *
+	 ****************************************************/
 	public static <T> int printArray(T[] inputArray, int lowSubscript, int highSubscript)
 			throws InvalidSubscriptException
 	{
 		int numberOfElementsPrinted = 0;
 		int lowIndex = lowSubscript;
 		int highIndex = highSubscript;
+		
+		//make sure inputArray is not empty.
 		if (inputArray != null)
 		{
-			int arraySize = inputArray.length;
-			if (lowIndex >= arraySize || lowIndex < 0 || highIndex >= arraySize 
+			// length of array.
+			int arrayLength = inputArray.length;
+			if (lowIndex >= arrayLength || lowIndex < 0 || highIndex >= arrayLength 
 					|| highIndex < 0 || highIndex < lowIndex)
 			{
 				throw new InvalidSubscriptException();
