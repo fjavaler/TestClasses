@@ -24,6 +24,7 @@ public class Validate_
 			}
 		}
 		while (!valid);
+		scanner.close();
 	} // end main()
 } // end class Validate
 

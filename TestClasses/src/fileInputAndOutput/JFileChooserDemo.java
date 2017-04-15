@@ -14,6 +14,10 @@ import javax.swing.JTextArea;
 
 public class JFileChooserDemo extends JFrame
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JTextArea outputArea; // displays file contents
 
 	// set up GUI

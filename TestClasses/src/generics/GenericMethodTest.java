@@ -62,6 +62,7 @@ public class GenericMethodTest
 		// tests
 		try
 		{
+			@SuppressWarnings("unused")
 			int size = printArray(characterArray, 0, 4);
 //			System.out.println("\nArray size = " + size);
 			System.out.println();
